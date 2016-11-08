@@ -10,7 +10,6 @@ let events = require("sdk/system/events");
 let runtime = require("sdk/system/runtime");
 let utils = require("sdk/window/utils");
 let system = require("sdk/system");
-let _ = require("sdk/l10n").get;
 
 let { Cc, Ci, Cu } = require("chrome");
 
@@ -291,21 +290,11 @@ function selectCert(userCerts, text) {
   sandboxDeclarations += "var selectedCert;\n";
   sandboxDeclarations += "var certPassword;\n";
   sandboxDeclarations += "function Cert() {};\n";
-  sandboxDeclarations += "var l10n = {}\n";
   let sandbox = Cu.Sandbox(data.url("certChooser.html"));
   Cu.evalInSandbox(sandboxDeclarations, sandbox);
   let domWindow = utils.getMostRecentBrowserWindow();
   sandbox.domain = domWindow.content.location.hostname;
   sandbox.textToSign = text;
-  // l10n
-  sandbox.l10n["subject"] = _("subject");
-  sandbox.l10n["serial"] = _("serial");
-  sandbox.l10n["valid_from"] = _("valid_from");
-  sandbox.l10n["to"] = _("to");
-  sandbox.l10n["key_usage"] = _("key_usage");
-  sandbox.l10n["email"] = _("email");
-  sandbox.l10n["issuer"] = _("issuer");
-  sandbox.l10n["token"] = _("token");
   for (let cert of userCerts) {
     sandbox.certs[cert.nickname] = new sandbox.Cert();
     sandbox.certs[cert.nickname].nickname = cert.nickname;
@@ -314,7 +303,7 @@ function selectCert(userCerts, text) {
     sandbox.certs[cert.nickname].notBefore = cert.validity.notBeforeLocalTime;
     sandbox.certs[cert.nickname].notAfter = cert.validity.notAfterLocalTime;
     let usages = {};
-    //cert.getUsagesString(true, {}, usages); // true for local-only verification
+    cert.getUsagesString(true, {}, usages); // true for local-only verification
     sandbox.certs[cert.nickname].usagesString = usages.value;
     sandbox.certs[cert.nickname].email = cert.emailAddress;
     sandbox.certs[cert.nickname].issuer = cert.issuerName;
