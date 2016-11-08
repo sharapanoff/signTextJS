@@ -1,0 +1,58 @@
+{
+ "abort_on_missing": false, 
+ "check_memory": false, 
+ "enable_e10s": false, 
+ "is-sdk-bundled": false, 
+ "jetpackID": "jid1-AXn9cXcB4fD1QQ@jetpack", 
+ "loader": "addon-sdk/lib/sdk/loader/cuddlefish.js", 
+ "main": "main", 
+ "mainPath": "signtextjs/main", 
+ "manifest": {
+  "signtextjs/main": {
+   "docsSHA256": "ca74d41eb2cbe757fd488b0d98f545d7aa74d98423351c29cfb8c7f68c169400", 
+   "jsSHA256": "819af831e1592c77737f9d7e9a28907c1f24292c70f32b0ade6bef744c7ddd90", 
+   "moduleName": "main", 
+   "packageName": "signtextjs", 
+   "requirements": {
+    "chrome": "chrome", 
+    "sdk/base64": "sdk/base64", 
+    "sdk/self": "sdk/self", 
+    "sdk/system": "sdk/system", 
+    "sdk/system/events": "sdk/system/events", 
+    "sdk/system/runtime": "sdk/system/runtime", 
+    "sdk/window/utils": "sdk/window/utils"
+   }, 
+   "sectionName": "lib"
+  }
+ }, 
+ "metadata": {
+  "addon-sdk": {
+   "description": "Add-on development made easy.", 
+   "keywords": [
+    "javascript", 
+    "engine", 
+    "addon", 
+    "extension", 
+    "xulrunner", 
+    "firefox", 
+    "browser"
+   ], 
+   "license": "MPL 2.0", 
+   "name": "addon-sdk"
+  }, 
+  "signtextjs": {
+   "author": "dkeeler@mozilla.com, rbarnes@mozilla.com, vbadev@gmail.com", 
+   "description": "window.crypto.signText replacement", 
+   "license": "MPL 2.0", 
+   "main": "main", 
+   "name": "signtextjs", 
+   "version": "0.7.4"
+  }
+ }, 
+ "name": "signtextjs", 
+ "parseable": false, 
+ "preferencesBranch": "jid1-AXn9cXcB4fD1QQ@jetpack", 
+ "sdkVersion": "1.17", 
+ "staticArgs": {}, 
+ "verbose": false
+}
