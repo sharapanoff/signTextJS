@@ -7,13 +7,12 @@
 "var _g = null;" +
 
 "window.addEventListener('signText-message-rs', function(event){" +
-"console.log(11);" +
-	"_g(event.detail);" +
+	"_g = event.detail;" +
 "}, false);"+
 
 "window.crypto = window.crypto || {};" +
 
-"window.crypto.signTextAsync = function(stringToSign, caOption){" +
+"window.crypto.signText = function(stringToSign, caOption){" +
 	"var event = document.createEvent('CustomEvent');" +
 	"event.initCustomEvent('signText-message-rq', true, true, { " +	
 		"'stringToSign': stringToSign,"+
@@ -26,8 +25,8 @@
 	"});" +
 	"document.documentElement.dispatchEvent(event);" +
 
-	"var p1 = new Promise(function(resolve, reject){_g=resolve;});"+
-	"return p1;" +
+	"alert('wait for certChooser dialog and then close this');" +
+	"return _g;" +
 "};";
 
 	document.body.appendChild(script);
