@@ -1,6 +1,6 @@
 {
-	"title": "signTextJsPlus (fix v50)",
-	"name": "signtextjsplusfixv50",
+	"title": "signTextJsPlus (fix v50 public)",
+	"name": "signtextjsplusfixv50public",
 	"version": "0.0.2",
 	"description": "window.crypto.signText replacement for ff50",
 	"main": "lib/main.js",
