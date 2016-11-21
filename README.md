@@ -1,26 +1,21 @@
-signTextJS plus
+signTextJsPlus (fix e10s)
 ===============
 
 re-implements window.crypto.signText and exposes it to content
 
-Why signTextJS plus?
+Why signTextJsPlus (fix e10s)?
 --------------------
-The goal of the original signTextJS is to provide a stop-gap measure for users
-while sites migrate away from window.crypto.signText. signTextJS plus is meant
-to last longer and enhances the add-on with features such as automatic
-signatures and filtering by certificate authority.
+the source code is 
+[here](https://github.com/sharapanoff/signTextJS/tree/signTextJsPlus_fix_v50)
+it is a branch of 
+[signTextJsPlus](https://github.com/jasp00/signTextJS), 
+which is a branch of 
+[signTextJs](https://github.com/mozkeeler/signTextJS) addon.
 
-How-To
-------
-Install and activate the Firefox Add-On SDK following the directions
-[here](https://developer.mozilla.org/en-US/Add-ons/SDK/Tutorials/Installation).
-Then, after checking out this repo, use `jpm run` to run Firefox with the
-add-on installed or `jpm xpi` to package the addon. After the add-on has been
-installed, content scripts that call `window.crypto.signText` should "just
-work".
-Alternatively, download and install a prepackaged xpi
-[here](https://addons.mozilla.org/en-US/firefox/addon/signtextjs-plus/).
+due to removal of API getUsagesString from nsIX509Cert these addons were not working in ff50
+see bug
+[1309690](https://bugzilla.mozilla.org/show_bug.cgi?id=1309690)
 
-TODO
-----
-See [issues](https://github.com/jasp00/signTextJS/issues).
+due to Electrolysis these addons were not working in ff52, when Enable multi-process in ON
+
+

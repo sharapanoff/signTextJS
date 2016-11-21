@@ -1,17 +1,9 @@
 {
-  "name": "signtextjsplus",
-  "title": "signTextJS plus",
-  "id": "jid1-FkPKYIvh3ElkQO@jetpack",
-  "description": "window.crypto.signText replacement",
-  "author": "dkeeler@mozilla.com, rbarnes@mozilla.com, vbadev@gmail.com",
-  "license": "MPL 2.0",
-  "version": "0.8.5",
-  "main": "lib/main.js",
-  "preferences": [{
-    "name": "debug",
-    "title": "Debug to console",
-    "description": "Sends message logging to the console.",
-    "type": "bool",
-    "value": false
-  }]
+	"title": "signTextJsPlus (fix e10s)",
+	"name": "signtextjsplusfixe10s",
+	"version": "0.0.0",
+	"description": "window.crypto.signText replacement for e10s",
+	"main": "lib/main.js",
+	"author": "dkeeler@mozilla.com, rbarnes@mozilla.com, vbadev@gmail.com, jasp00, sharapanoff@hotmail.com",
+	"license": "MPL 2.0"
 }
