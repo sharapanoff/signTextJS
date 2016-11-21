@@ -1,0 +1,67 @@
+Manifest-Version: 1.0
+
+Name: install.rdf
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 6EDvi/omZCcLzzXNupDnBQ==
+SHA1-Digest: qNYoIRMgL70IoNn4M+lt6OZLFfA=
+
+Name: icon.png
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: Tx+dR2DEPVQO79yYjWoZvg==
+SHA1-Digest: d/VIEd+BSrsk6Rq5R1c1px84uqU=
+
+Name: bootstrap.js
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 7bXGjs354WXP08z1LJmaUQ==
+SHA1-Digest: hBvzrYsRacNpTOCOH+GOhYBn2mE=
+
+Name: package.json
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: Uw3bQWLXCZS/Z3pUanQzBw==
+SHA1-Digest: 0PKV3hHw04HNd+yuYRyubzjn6q8=
+
+Name: README.md
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: Lg+C68/aZMmo/dMzzTqIJw==
+SHA1-Digest: CNKzthBVe0xZP5xe0x+uSSiaR4Q=
+
+Name: data/certChooser.css
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: QPWB9K1toaXw+zzRuOGCtg==
+SHA1-Digest: ZP+9oVCaFOaTHG+zA0RWnoPa/2Q=
+
+Name: data/certChooser.html
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: TjhvHnNzz6O3xGKwadri2Q==
+SHA1-Digest: kHOjRt/pzXdVZCPvClCGCpZ1wzc=
+
+Name: data/certChooser.js
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 7KQU4MrPNmGeRFjuDc69Gw==
+SHA1-Digest: W+49y9fgC3fn/rY9qiaX4osVruE=
+
+Name: lib/main.js
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: MT02I5SQ2A73olu22v/R6Q==
+SHA1-Digest: gMZ8SR8V6FzPo3+qURtpKtzGJCw=
+
+Name: locale/bg-BG.properties
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 0YuDN8wD0mfDgorZRu84wQ==
+SHA1-Digest: /573zKqS+1BR+pTqZtG4Vf/GyHY=
+
+Name: locale/ca.properties
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: L8wpTph48qlnqVHFBVH4PA==
+SHA1-Digest: QBTirYzMrOg3da0pbxZb7eScOJI=
+
+Name: locale/en-US.properties
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: I1tH1DXWALy/gNuwtyJevg==
+SHA1-Digest: LmTtLr7NsyOtGtjzqA5CPqZdn/Q=
+
+Name: LICENSE
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: ZdJvzC816moYGsd35C2x6g==
+SHA1-Digest: +nxNdbrjpkHR+atd8CgXW/uKaco=
+
