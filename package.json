@@ -1,7 +1,7 @@
 {
 	"title": "signTextJsPlus (fix e10s)",
 	"name": "signtextjsplusfixe10s",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"description": "window.crypto.signText replacement for e10s",
 	"main": "lib/main.js",
 	"author": "dkeeler@mozilla.com, rbarnes@mozilla.com, vbadev@gmail.com, jasp00, sharapanoff@hotmail.com",
