@@ -1,21 +1,33 @@
-﻿self.port.on("Call_Page_Init", function ()
-{
-	var script = document.createElement("script");
-	script.type = "text/javascript";
-	script.text =
+﻿/*****************************************************************************
+PageMod_ContentScriptFile
+	this content-script is included in every page
+*****************************************************************************/
 
-"var _g = null;" +
 
-"window.addEventListener('signText-message-rs', function(event){" +
-	"_g = event.detail;" +
-"}, false);"+
+
+/*****************************************************************************
+page-script to be injected
+	create function window.crypto.signText, which will send message to content-script
+	add EventListener to receive result message from the content-script
+*****************************************************************************/
+//----------------------------------------------------------------------------
+//--- BEGIN PAGE-SCRIPT ------------------------------------------------------
+var strScript =
+"var fn_signTextOnResolve = null;" +
+
+
+"window.addEventListener('signText_msg_ContentReturnsSignTextResult', function(event){" +
+	"fn_signTextOnResolve(event.detail);" +
+"}, false);" +
+
 
 "window.crypto = window.crypto || {};" +
 
-"window.crypto.signText = function(stringToSign, caOption){" +
+
+"window.crypto.signTextAsync = function(stringToSign, caOption){" +
 	"var event = document.createEvent('CustomEvent');" +
-	"event.initCustomEvent('signText-message-rq', true, true, { " +	
-		"'stringToSign': stringToSign,"+
+	"event.initCustomEvent('signText_msg_PageCallsSignText', true, true, { " +
+		"'stringToSign': stringToSign," +
 		"'caOption': caOption," +
 		"'misc':{" +
 			"'location': window.location.href," +
@@ -23,30 +35,66 @@
 			"'characterSet': window.document.characterSet," +
 		"}," +
 	"});" +
-	"document.documentElement.dispatchEvent(event);" +
 
+	"var p = new Promise(" +
+		"function(resolve, reject) {" +
+			"document.documentElement.dispatchEvent(event);" +
+			"fn_signTextOnResolve=resolve;" +
+	"});" +
+	"return p;" +
+"};" +
+
+
+"window.crypto.signText = function(stringToSign, caOption){" +
+	"var res = null;"+
+	"var p = window.crypto.signTextAsync(stringToSign, caOption);" +
+	"p.then(function(val){res = val;});"+
+
+	//just block the main thred
 	"alert('wait for certChooser dialog and then close this');" +
-	"return _g;" +
-"};";
 
+	"return res;" +
+"};" +
+
+
+"";
+//--- END PAGE-SCRIPT --------------------------------------------------------
+//----------------------------------------------------------------------------
+
+
+
+/*****************************************************************************
+receive INIT message from addon-script
+will inject page-script
+*****************************************************************************/
+self.port.on("signText_msg_InitContentScript", function ()
+{
+	var script = document.createElement("script");
+	script.type = "text/javascript";
+	script.text = strScript;
 	document.body.appendChild(script);
 
 });
 
 
-//called from addon-script to content-script
-self.port.on("Call_Page_signTextRs", function (sgn)
+
+/*****************************************************************************
+receive message from addon-script
+will send message to page-script
+*****************************************************************************/
+self.port.on("signText_msg_AddonReturnsSignTextResult", function (sgn)
 {
-	//call from content-script to page-script
-	var event = new CustomEvent("signText-message-rs", { bubbles: true, detail: sgn });
+	var event = new CustomEvent("signText_msg_ContentReturnsSignTextResult", { bubbles: true, detail: sgn });
 	document.documentElement.dispatchEvent(event);
 });
 
 
 
-//called from page-script to content-script
-window.addEventListener('signText-message-rq', function (event)
+/*****************************************************************************
+receive message from page-script
+will send message to addon-script
+*****************************************************************************/
+window.addEventListener('signText_msg_PageCallsSignText', function (event)
 {
-	//call from content-script to addon-script
-	self.port.emit("Call_Addon_signTextRq", event.detail);
+	self.port.emit("signText_msg_ContentCallsSignText", event.detail);
 }, false);
